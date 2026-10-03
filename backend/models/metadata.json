@@ -1,0 +1,32 @@
+{
+  "best_model": "logistic_regression",
+  "trained_at": "2026-10-03T19:49:31.122649+00:00",
+  "dataset": "datasets/phishing_email.csv",
+  "rows": 80463,
+  "test_size": 0.2,
+  "seed": 42,
+  "sklearn_version": "1.6.1",
+  "metrics": {
+    "logistic_regression": {
+      "accuracy": 0.9886907351022184,
+      "precision": 0.9866463628909453,
+      "recall": 0.9919915204334001,
+      "f1": 0.9893117218698614,
+      "roc_auc": 0.9989773903941065
+    },
+    "random_forest": {
+      "accuracy": 0.9847138507425589,
+      "precision": 0.9868902799102398,
+      "recall": 0.9841008126251325,
+      "f1": 0.9854935723552306,
+      "roc_auc": 0.9984774026484423
+    },
+    "xgboost": {
+      "accuracy": 0.9797427452929846,
+      "precision": 0.9730042868729,
+      "recall": 0.9890472264750912,
+      "f1": 0.980960168204649,
+      "roc_auc": 0.9977531032362571
+    }
+  }
+}

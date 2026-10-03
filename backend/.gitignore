@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+models/reports/
+models/*/reports/
+datasets/*.csv
+!datasets/sample_dataset.csv

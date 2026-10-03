@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 232 55% 3%;
+    --foreground: 220 30% 94%;
+    --card: 230 45% 7%;
+    --card-foreground: 220 30% 94%;
+    --primary: 262 83% 66%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 228 40% 12%;
+    --secondary-foreground: 220 30% 92%;
+    --muted: 228 38% 10%;
+    --muted-foreground: 224 16% 63%;
+    --accent: 228 45% 14%;
+    --accent-foreground: 220 30% 94%;
+    --border: 228 35% 16%;
+    --input: 228 35% 18%;
+    --ring: 262 83% 66%;
+    --danger: 0 84% 62%;
+    --safe: 158 64% 46%;
+    --warn: 38 92% 56%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(60rem 30rem at 85% -10%, hsl(262 83% 40% / 0.18), transparent 60%),
+      radial-gradient(50rem 30rem at -10% 10%, hsl(226 80% 35% / 0.2), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

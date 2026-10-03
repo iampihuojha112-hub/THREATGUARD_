@@ -1,0 +1,32 @@
+{
+  "best_model": "logistic_regression",
+  "trained_at": "2026-10-03T17:44:14.392306+00:00",
+  "dataset": "datasets/spam.csv",
+  "rows": 5055,
+  "test_size": 0.2,
+  "seed": 42,
+  "sklearn_version": "1.6.1",
+  "metrics": {
+    "logistic_regression": {
+      "accuracy": 0.990108803165183,
+      "precision": 0.9910714285714286,
+      "recall": 0.925,
+      "f1": 0.9568965517241379,
+      "roc_auc": 0.9934156378600822
+    },
+    "random_forest": {
+      "accuracy": 0.9831849653808111,
+      "precision": 1.0,
+      "recall": 0.8583333333333333,
+      "f1": 0.9237668161434978,
+      "roc_auc": 0.981458099513655
+    },
+    "xgboost": {
+      "accuracy": 0.9812067260138477,
+      "precision": 0.9719626168224299,
+      "recall": 0.8666666666666667,
+      "f1": 0.9162995594713657,
+      "roc_auc": 0.9791900486344931
+    }
+  }
+}

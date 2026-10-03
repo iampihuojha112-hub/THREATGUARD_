@@ -1,0 +1,78 @@
+{
+  "best_model": "xgboost",
+  "trained_at": "2026-10-03T19:37:29.595042+00:00",
+  "dataset": "datasets/url.csv",
+  "rows": 235370,
+  "test_size": 0.2,
+  "seed": 42,
+  "sklearn_version": "1.6.1",
+  "feature_names": [
+    "url_length",
+    "host_length",
+    "domain_name_length",
+    "path_length",
+    "query_length",
+    "fragment_length",
+    "num_dots",
+    "num_hyphens",
+    "num_underscores",
+    "num_digits",
+    "num_special_chars",
+    "num_slashes",
+    "num_at",
+    "num_percent_encoded",
+    "num_query_params",
+    "has_https",
+    "has_ip_host",
+    "has_port",
+    "has_punycode",
+    "has_at_symbol",
+    "subdomain_count",
+    "tld_length",
+    "suspicious_tld",
+    "is_shortener",
+    "path_depth",
+    "digit_ratio",
+    "letter_ratio",
+    "host_digit_count",
+    "host_hyphen_count",
+    "host_entropy",
+    "url_entropy",
+    "longest_token_length",
+    "keyword_count",
+    "brand_mismatch",
+    "has_redirect_param",
+    "has_double_slash_path",
+    "executable_extension"
+  ],
+  "feature_version": 2,
+  "label_encoding": {
+    "0": "legitimate",
+    "1": "malicious"
+  },
+  "labels_inverted_at_load": true,
+  "probe_verdict": "MIXED",
+  "metrics": {
+    "logistic_regression": {
+      "accuracy": 0.9968985002336747,
+      "precision": 0.9992495497298379,
+      "recall": 0.993483883804218,
+      "f1": 0.9963583757358077,
+      "roc_auc": 0.9983656842040964
+    },
+    "random_forest": {
+      "accuracy": 0.9975782810043761,
+      "precision": 0.9997000299970003,
+      "recall": 0.9946279347393554,
+      "f1": 0.9971575325387723,
+      "roc_auc": 0.998522570471885
+    },
+    "xgboost": {
+      "accuracy": 0.997875685091558,
+      "precision": 0.9998001199280432,
+      "recall": 0.9952248308794269,
+      "f1": 0.9975072290357961,
+      "roc_auc": 0.9985698026177854
+    }
+  }
+}
