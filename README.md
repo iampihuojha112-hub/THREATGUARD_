@@ -1,6 +1,16 @@
-# ThreatGuard
+<p align="center">
+  <img src="docs/images/threatguard-banner.png" alt="ThreatGuard Banner"/>
+</p>
+# ThreatGuard - AI-Powered Multi-Channel Threat Detection
 
 AI-powered threat detection for **email phishing**, **malicious URLs** and **SMS scams**. Paste a message, link or text and get a verdict, risk score, confidence, probability and a plain-language explanation. Every scan is stored in Supabase and feeds a single dashboard and history.
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green?style=for-the-badge&logo=fastapi)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-Frontend-blue?style=for-the-badge&logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green?style=for-the-badge&logo=supabase)
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-red?style=for-the-badge)
 
 - **Frontend:** Next.js 15, TypeScript, Tailwind CSS, shadcn-style UI components, Recharts
 - **Backend:** FastAPI (Python)
@@ -129,6 +139,117 @@ The URL model reads the scheme, so train on URLs as they will be pasted (with `h
 To smoke-test the pipelines without real data: `python datasets/generate_sample_sms_url.py` (and `generate_sample.py` for email). That data is synthetic and its metrics mean nothing.
 
 You can train only the channels you need. A channel without a trained model returns HTTP 503 with a message naming the command to run, and the rest keep working.
+
+## Model Performance
+
+ThreatGuard evaluates multiple machine learning algorithms for each detection channel and automatically selects the best-performing model based on F1 Score and ROC-AUC.
+
+### Email Threat Detection
+
+**Dataset Statistics**
+
+| Metric | Value |
+|----------|----------:|
+| Total Emails | 16,093 |
+| Legitimate Emails | 7,602 |
+| Phishing Emails | 8,491 |
+
+**Evaluation Results**
+
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
+|---------|---------:|---------:|---------:|---------:|---------:|
+| Logistic Regression | **98.87%** | **98.66%** | **99.20%** | **98.93%** | **99.90%** |
+| Random Forest | 98.47% | 98.69% | 98.41% | 98.55% | 99.85% |
+| XGBoost | 97.97% | 97.30% | 98.90% | 98.10% | 99.78% |
+
+**Selected Production Model:** Logistic Regression
+
+Reason:
+
+- Highest F1 Score
+- Highest ROC-AUC
+- Fast inference speed
+- Excellent explainability
+
+---
+
+### URL Threat Detection
+
+**Dataset Statistics**
+
+| Metric | Value |
+|----------|----------:|
+| Total URLs | 47,074 |
+| Legitimate URLs | 26,970 |
+| Malicious URLs | 20,104 |
+
+**Evaluation Results**
+
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
+|---------|---------:|---------:|---------:|---------:|---------:|
+| Logistic Regression | 99.69% | 99.92% | 99.35% | 99.64% | 99.84% |
+| Random Forest | 99.76% | 99.97% | 99.46% | 99.72% | 99.85% |
+| XGBoost | **99.79%** | **99.98%** | **99.52%** | **99.75%** | **99.86%** |
+
+**Selected Production Model:** XGBoost
+
+Reason:
+
+- Highest Accuracy
+- Highest F1 Score
+- Highest ROC-AUC
+- Superior detection performance on phishing URLs
+
+---
+
+### SMS Scam Detection
+
+**Dataset Statistics**
+
+| Metric | Value |
+|----------|----------:|
+| Total Messages | 1,011 |
+| Legitimate Messages | 891 |
+| Scam Messages | 120 |
+
+**Evaluation Results**
+
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
+|---------|---------:|---------:|---------:|---------:|---------:|
+| Logistic Regression | **99.01%** | **99.11%** | **92.50%** | **95.69%** | **99.34%** |
+| Random Forest | 98.32% | 100.00% | 85.83% | 92.38% | 98.15% |
+| XGBoost | 98.12% | 97.20% | 86.67% | 91.63% | 97.92% |
+
+**Selected Production Model:** Logistic Regression
+
+Reason:
+
+- Highest F1 Score
+- Highest ROC-AUC
+- Fastest inference
+- Most stable performance
+
+---
+
+### Overall Production Models
+
+| Detection Type | Selected Model | Accuracy | F1 Score |
+|----------------|----------------|-----------:|-----------:|
+| Email Phishing Detection | Logistic Regression | 98.87% | 98.93% |
+| URL Threat Detection | XGBoost | 99.79% | 99.75% |
+| SMS Scam Detection | Logistic Regression | 99.01% | 95.69% |
+
+### Evaluation Strategy
+
+| Parameter | Value |
+|------------|---------|
+| Train/Test Split | 80/20 |
+| Random Seed | 42 |
+| Model Selection Metric | F1 Score |
+| Secondary Metric | ROC-AUC |
+| Email & SMS Features | TF-IDF Vectorization |
+| URL Features | 37 Engineered URL Features |
+| Models Evaluated | Logistic Regression, Random Forest, XGBoost |
 
 ### 3. Run the backend
 
