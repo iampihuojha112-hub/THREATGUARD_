@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="docs/images/threatguard-banner.png" alt="ThreatGuard Banner"/>
-</p>
+
 # ThreatGuard - AI-Powered Multi-Channel Threat Detection
 
 AI-powered threat detection for **email phishing**, **malicious URLs** and **SMS scams**. Paste a message, link or text and get a verdict, risk score, confidence, probability and a plain-language explanation. Every scan is stored in Supabase and feeds a single dashboard and history.
@@ -16,8 +14,6 @@ AI-powered threat detection for **email phishing**, **malicious URLs** and **SMS
 - **Backend:** FastAPI (Python)
 - **ML:** one model per channel. Logistic Regression, Random Forest and XGBoost are trained and compared, and the best by F1 is saved
 - **Data and auth:** Supabase PostgreSQL + Supabase Auth
-
-Upgrading an existing install? Read [`docs/UPGRADE.md`](docs/UPGRADE.md) first. It lists every new and changed file and the merge steps.
 
 ## Architecture
 
